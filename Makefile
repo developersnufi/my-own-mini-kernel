@@ -27,6 +27,7 @@ $(BUILD_DIR)/%.o: %.c | $(BUILD_DIR)
 $(BUILD_DIR)/kernel.o $(BUILD_DIR)/keyboard.o: keyboard.h vga.h
 $(BUILD_DIR)/keyboard.o: io.h
 $(BUILD_DIR)/kernel.o: vga.h
+$(BUILD_DIR)/vga.o: io.h vga.h
 
 $(KERNEL): $(BUILD_DIR)/boot.o $(KERNEL_OBJECTS) linker.ld
 	$(LD) -m elf_i386 -T linker.ld -nostdlib -o $@ $(BUILD_DIR)/boot.o $(KERNEL_OBJECTS)
